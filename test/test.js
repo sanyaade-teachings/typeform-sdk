@@ -1,5 +1,6 @@
 'use strict';
 /*jshint expr: true*/
+var config + require('./config');
 var expect = require('chai').expect;
 var TypeForm = require('../');
 
@@ -9,7 +10,7 @@ describe('typeform-sdk node module', function () {
     expect(t).to.exist;
   });
   it('retrieves information from the api', function (done) {
-    var t = new TypeForm('4398ded6beb95f4e8c57718dc8f9f26b', {proxy: {host:'172.27.185.200', port:80}});
+    var t = new TypeForm(config.apiKey, config.proxy);
     t.info(function(res,err){
       console.log('hei' + JSON.stringify(res));
       expect(res).to.exist;
