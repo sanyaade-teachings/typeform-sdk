@@ -53,7 +53,6 @@ describe('typeform-sdk node module', function () {
         expect(res.design_id).to.be.equal(21);
         expect(res.fields[0].question).to.be.equal('This is an awesome form!');
         expect(res.fields[1].question).to.be.equal('Choose your weapon:');
-        console.log(res.links.form_render.get);
         done();
       });
     });
