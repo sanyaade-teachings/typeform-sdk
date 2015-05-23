@@ -8,7 +8,7 @@ var StatementField = require('../lib/models/statementField');
 var MultipleChoiceField = require('../lib/models/multipleChoiceField');
 
 describe('typeform-sdk node module', function () {
-  it('must have at least one test', function () {
+  it('can create an empty API object', function () {
     var t = new TypeForm();
     expect(t).to.exist;
 
