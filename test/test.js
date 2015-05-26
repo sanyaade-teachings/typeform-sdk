@@ -1,6 +1,6 @@
 'use strict';
 /*jshint expr: true*/
-var config = require('./config'),
+var config = require('./config/config'),
     expect = require('chai').expect,
     TypeForm = require('../'),
     StatementField = require('../lib/models/statementField'),
