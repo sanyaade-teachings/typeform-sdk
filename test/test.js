@@ -3,8 +3,8 @@
 var config = require('./config/config'),
     expect = require('chai').expect,
     TypeForm = require('../'),
-    StatementField = require('../lib/models/statementField'),
-    MultipleChoiceField = require('../lib/models/multipleChoiceField');
+    StatementField = TypeForm.StatementField,
+    MultipleChoiceField = TypeForm.MultipleChoiceField;
 
 describe('typeform-sdk node module', function () {
   describe('sanity checks', function(){
