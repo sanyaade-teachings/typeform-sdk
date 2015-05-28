@@ -4,6 +4,7 @@ module.exports = function (grunt) {
   require('time-grunt')(grunt);
   // Load all grunt tasks
   require('load-grunt-tasks')(grunt);
+  grunt.loadNpmTasks('grunt-coffeelint');
 
   grunt.initConfig({
     jshint: {
@@ -16,17 +17,22 @@ module.exports = function (grunt) {
       },
       js: {
         src: ['lib/*.js', 'lib/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.js']
       }
+    },
+    coffeelint: {
+      options: {
+        configFile: 'coffeelint.json',
+        reporter: 'default'
+      },
+      test: ['test/**/*.coffee']
     },
     mochacli: {
       options: {
         reporter: 'nyan',
-        bail: true
+        bail: true,
+        require: ['coffee-script/register']
       },
-      all: ['test/*.js']
+      all: ['test/*.coffee']
     },
     watch: {
       gruntfile: {
@@ -38,11 +44,11 @@ module.exports = function (grunt) {
         tasks: ['jshint:js', 'mochacli']
       },
       test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'mochacli']
+        files: '<%= coffeelint.test %>',
+        tasks: ['coffeelint:test', 'mochacli']
       }
     }
   });
 
-  grunt.registerTask('default', ['jshint', 'mochacli']);
+  grunt.registerTask('default', ['jshint', 'coffeelint', 'mochacli']);
 };
